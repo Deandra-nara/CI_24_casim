@@ -1,55 +1,55 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Data Anggota</title>
+<?php $this->load->view('templates/header'); ?>
+<?php $this->load->view('templates/sidebar'); ?>
 
-    <!-- DataTables -->
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
-</head>
-<body>
+<div class="container-fluid">
 
-<h2>Data Anggota</h2>
-<a href="<?= base_url('anggota/tambah') ?>">Tambah</a>
+<h1 class="h3 mb-4 text-gray-800">Data Anggota</h1>
 
-<table id="table" border="1">
-    <thead>
-        <tr>
-            <th>No</th>
-            <th>Nomor</th>
-            <th>Nama</th>
-            <th>Telepon</th>
-            <th>Email</th>
-            <th>Status</th>
-            <th>Aksi</th>
-        </tr>
-    </thead>
+<a href="<?= base_url('anggota/tambah') ?>" class="btn btn-primary mb-3">
+    Tambah
+</a>
 
-    <tbody>
-        <?php $no=1; foreach($anggota as $a): ?>
-        <tr>
-            <td><?= $no++ ?></td>
-            <td><?= $a->nomor_anggota ?></td>
-            <td><?= $a->nama ?></td>
-            <td><?= $a->telepon ?></td>
-            <td><?= $a->email ?></td>
-            <td><?= $a->status ?></td>
-            <td>
-                <a href="<?= base_url('anggota/edit/'.$a->id) ?>">Edit</a>
-                <a href="<?= base_url('anggota/hapus/'.$a->id) ?>">Hapus</a>
-            </td>
-        </tr>
-        <?php endforeach; ?>
-    </tbody>
-</table>
+<div class="card shadow mb-4">
+    <div class="card-body">
+        <div class="table-responsive">
 
-<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+            <table class="table table-bordered" id="dataTable">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Nomor</th>
+                        <th>Nama</th>
+                        <th>Telepon</th>
+                        <th>Email</th>
+                        <th>Status</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
 
-<script>
-$(document).ready(function() {
-    $('#table').DataTable();
-});
-</script>
+                <tbody>
+                    <?php $no=1; foreach($anggota as $a): ?>
+                    <tr>
+                        <td><?= $no++ ?></td>
+                        <td><?= $a->nomor_anggota ?></td>
+                        <td><?= $a->nama ?></td>
+                        <td><?= $a->telepon ?></td>
+                        <td><?= $a->email ?></td>
+                        <td>
+                            <span class="badge badge-success"><?= $a->status ?></span>
+                        </td>
+                        <td>
+                            <a href="<?= base_url('anggota/edit/'.$a->id) ?>" class="btn btn-warning btn-sm">Edit</a>
+                            <a href="<?= base_url('anggota/hapus/'.$a->id) ?>" class="btn btn-danger btn-sm">Hapus</a>
+                        </td>
+                    </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
 
-</body>
-</html>
+        </div>
+    </div>
+</div>
+
+</div>
+
+<?php $this->load->view('templates/footer'); ?>

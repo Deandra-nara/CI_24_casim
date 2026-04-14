@@ -9,11 +9,7 @@ class Anggota extends CI_Controller {
 
     public function index() {
         $data['anggota'] = $this->Anggota_model->get_all();
-        $this->load->view('templates/header');
-        $this->load->view('templates/sidebar');
-        $this->load->view('templates/topbar');
         $this->load->view('anggota/index', $data);
-        $this->load->view('templates/footer');
     }
 
     public function tambah() {
